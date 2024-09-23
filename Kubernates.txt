@@ -1,0 +1,151 @@
+kubernates
+==========
+
+== > Opensource 
+
+
+
+
+Kubernates
+===========
+==> K8s works based on cluster archicture
+==> Cluster means group of servers.
+==> Control Plane /Master Node
+2. Worker Nodes
+3.Kubectl
+
+
+K8s control plane will contain below components
+
+1. API Server
+2. Scheduler
+3. Controller Manager
+4. ETCD
+
+K8s worker Node will contains below components
+
+1.POD
+2.Containers
+3.Docker Enginer
+4. Kublet
+5.Kube proxy
+
+==> To commuicate with k8s control plane we have 2 options 
+1.UI
+2.Kubectl(CLI)
+
+
+==> Kubernates Cluster we can setup in multiple ways
+.. Self Managed k8s (single Node Cluster)
+.. Kubeadm(Multi Node Cluster) --> Enterprise level
+
+Managed k8s Cluster
+--> AWS EKS
+--> Azure AKE
+--> GCP GKE
+--> IBM IKE
+
+===========
+What is POD
+===========
+==> POD is a smallest building block that we can deploy in k8s cluster.
+==> our application will be deployed in k8s cluster as a POD.
+==> For one application we can create multiple POD replicas for high availability 
+== For every POD one IP address will be generated.
+==> If POD get damaged/crashed the k8s will replace it(self-healing)
+==> TO create PODS we will use MANIFAST YML files.
+Notes:-> By default PODS are accessible only with in the cluster( we can't access outside)
+
+==> To expose PODS for outside access we need to use K8s service concept.
+
+
+======================
+What is Service in K8s ?
+==========================
+
+=> K8s service is used to expose PODS
+=> We have 3 types of services
+
+1.Cluster IP(To access PODS with in the cluster)
+2.Node Port(To access PODS using NODE public IP)
+3.Load Balancer (To distribute the traffic to pod replicas)
+
+
+=======================
+K8s Manifast YML syntax
+=========================
+
+---
+apiVersion:
+kind:
+metadata:
+spec:
+...
+
+---
+apiVersion: apps/v1
+kind: Deployment 
+metadata:
+ name: javawebappdeployment
+spec:
+ replicas:2
+ strategy:
+   type: RollingUpdate
+ Selector:
+   matchLabels:
+     app: javawebapp
+ template:
+  metadata:
+   name: javawebapppod
+   labels:
+    app: javawebapp
+
+  spec:
+   containers:
+   - name: javawebappcontainer
+     image: ashokit/javawebapp
+     ports:
+	- containerPort:8080
+
+...
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+ name: javawebappsvc
+spec:
+ type: LoadBalancer
+ selector:
+  app: javawebapp
+
+ ports:
+ - port:80
+   containerPort:8080
+...
+
+
+## check pods
+$ kubectl get pods
+
+# check service created
+$ kubectl get svc
+
+#check deployments created.
+$ kubectl get deployment
+
+## Execute k8s manifest yml
+$ kubectl apply -f <yml>
+
+## delete resources we have created
+$ kubectl delete all -all
+
+## chcek pod logs
+$$ kubectl logs < pod-name> 
+
+## Delete pod
+$ kubectl delete pod <Pod-name> 
+
+
+
+

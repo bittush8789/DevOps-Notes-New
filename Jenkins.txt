@@ -1,0 +1,92 @@
+============>
+Jenkins
+============> 
+Agenda
+======> 
+What is Build & Deployment Process
+Application Environment in Real-Time
+Challenges in Mannual Build and Deployment
+What is CI/CD & Why we need?
+Jenkins introduction
+Jenkins Setup
+Jenkins Job Creations
+Job Scheduling 
+Connculsion...
+
+
+================================================
+Build and deployment process
+============================
+
+1. Take latest source code from Git Hub
+2. Compile Project source code.
+3. Execute Unit Test case
+4. Perform Code Review using sonarQube
+5. Package the application (jar/war)
+5. Upload Build Artifact  in Nexus 
+6. Deploy the Application in Server
+ 
+
+Environment: A platform which is used to run our application.
+
+Application Environment:
+=======================
+Dev env : Developers will use perform code integration testing
+QA env : Testers will use to perform functional testing
+UAT env: User acceptance testing( client side team will perform application testing)
+pilot env : It is also called pre-production enironment(Performane testing)
+production env : Live enivronment: End users will access application running in PROD environment.
+
+
+www.gmail.com --> Production env url of the project
+www.facebook.com --> Production env url of the project
+
+Development Team : Responsible for project development( Coding )
+Testing Team: -> Responsible for functionality testing( Verifica tion & Validation )
+Operation Team: -> Responsible for Build & Deployment Process
+
+Dev +Ops => DevOps
+
+Development + Operations ===> DevOps
+
+DevOps is a process which is used to collobrate development team work & operations team work.
+
+
+Challenges  in Mannual Process
+==============================
+
+Every day we need to deploy latest code.
+Deploy code in multiple environment
+Takes a lot of time
+Repeated work
+Error prone
+
+
+=======
+Jenkins
+==========
+
+--> Jenkins is free software
+--> Jenkins developed using java lanaguage
+--> Jenkins is used to automate build & deployment process
+--> We can implement CI CD using jenkins.
+
+What is CI CD
+===============
+
+CI: Continuous integration
+CD: Continuous Delivery / Continuous Deployment.
+
+CI CD is one of the trending approach in software development life cycle.
+
+==> CI CD is used to simplify and automate project deployment & delivery process
+
+Continuous Integration: When code changes happen it should be ready to test.
+
+Continuous Delivery : Keep it ready to release
+Continuous Deployment :-> Deploy the project to production
+
+Note:-> For Production deployment we need to take client approval.
+
+
+
